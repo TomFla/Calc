@@ -11,47 +11,9 @@ body {
   background: linear-gradient(to right, #9156E2, #FE9669);
 }
 
-.grid {
-  display: grid;
-  justify-content: center;
-  align-content: center;
-  min-height: 100vh;
-  grid-template-columns: repeat(4, 100px);
-  grid-template-rows: minmax(160px, auto) repeat(5, 100px);
-}
-
-.grid > button {
-  cursor: pointer;
-  font-size: 1.6em;
-  border: none;
-  padding: 15px;
-}
-
-.digits-left-column {
-  background: linear-gradient(#FDFDFD, #F1F1F1);
-}
-
-.digits-midle-column {
-  background: linear-gradient(#F6F6F6, #F1F1F1);
-}
-
-.digits-rigth-column {
-  background: linear-gradient(#FCFCFC, #F1F1F1);
-}
-
-.equation {
-  background: linear-gradient(#9156E2, #8C51DD);
-}
-
-.wide {
-  grid-column: span 2;
-  background-color: #E62F89;
-  color: black;
-}
-
 .screen {
   grid-column: 1/-1;
-  background-color: black;
+  background-color: #000000;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   display: flex;
@@ -62,24 +24,73 @@ body {
   word-wrap: break-word;
   word-break: break-all;
 }
-
-.memory {
+.screen .memory {
   color: #876B72;
   font-size: 1.5em;
 }
-
-.result {
+.screen .result {
   color: white;
   font-size: 3.5em;
   font-weight: lighter;
 }
 
-.bottomLeftEdge {
+.grid {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(160px, auto) repeat(5, 100px);
+}
+.grid ul {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+}
+.grid ul li:nth-child(4n+1) {
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.6em;
+  border: none;
+  list-style-type: none;
+  background: linear-gradient(whitesmoke, #e9e9e9);
+}
+.grid ul li:nth-child(4n+2) {
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.6em;
+  border: none;
+  list-style-type: none;
+  background: linear-gradient(#FDFDFD, #F1F1F1);
+}
+.grid ul li:nth-child(4n+3) {
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.6em;
+  border: none;
+  list-style-type: none;
+  background: linear-gradient(white, #f9f9f9);
+}
+.grid ul .bottomLeftEdge {
   border-bottom-left-radius: 8px;
 }
-
-.bottomRightEdge {
+.grid ul .bottomRightEdge {
   border-bottom-right-radius: 8px;
+}
+.grid ul .equation {
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.6em;
+  border: none;
+  list-style-type: none;
+  background: linear-gradient(#8045d1, #8C51DD) !important;
+}
+.grid ul .wide {
+  background-color: #E62F89 !important;
+  grid-column: span 2;
 }
 
 /*# sourceMappingURL=style.css.map */

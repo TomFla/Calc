@@ -1,57 +1,13 @@
-*,
-*::before,
-*::after {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Lexend Mega', sans-serif;
-}
-
+@import "variables";
+@import "reset";
+@import "mixins";
 body {
     background: linear-gradient(to right, #9156E2, #FE9669);
 }
 
-.grid {
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    min-height: 100vh;
-    grid-template-columns: repeat(4, 100px);
-    grid-template-rows: minmax(160px, auto) repeat(5, 100px);
-}
-
-.grid>button {
-    cursor: pointer;
-    font-size: 1.6em;
-    border: none;
-    padding: 15px;
-}
-
-.digits-left-column {
-    background: linear-gradient(#FDFDFD, #F1F1F1);
-}
-
-.digits-midle-column {
-    background: linear-gradient(#F6F6F6, #F1F1F1);
-}
-
-.digits-rigth-column {
-    background: linear-gradient(#FCFCFC, #F1F1F1);
-}
-
-.equation {
-    background: linear-gradient(#9156E2, #8C51DD);
-}
-
-.wide {
-    grid-column: span 2;
-    background-color: #E62F89;
-    color: black;
-}
-
 .screen {
     grid-column: 1 / -1;
-    background-color: black;
+    background-color: $screenColor;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     display: flex;
@@ -61,23 +17,74 @@ body {
     padding: 5px;
     word-wrap: break-word;
     word-break: break-all;
+    .memory {
+        color: #876B72;
+        font-size: 1.5em;
+    }
+    .result {
+        color: white;
+        font-size: 3.5em;
+        font-weight: lighter;
+    }
 }
 
-.memory {
-    color: #876B72;
-    font-size: 1.5em;
+.grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(160px, auto) repeat(5, 100px);
+    ul {
+        display: grid;
+        grid-template-columns: repeat(4, 100px);
+        li:nth-child(4n+1) {
+            @include digits;
+            background: linear-gradient(darken($firstButtonColor, 3%), darken($secondButtonColor, 3%))
+        }
+        li:nth-child(4n+2) {
+            @include digits;
+            background: linear-gradient($firstButtonColor, $secondButtonColor)
+        }
+        li:nth-child(4n+3) {
+            @include digits;
+            background: linear-gradient(lighten($firstButtonColor, 3%), lighten($secondButtonColor, 3%))
+        }
+        .bottomLeftEdge {
+            border-bottom-left-radius: 8px;
+        }
+        .bottomRightEdge {
+            border-bottom-right-radius: 8px;
+        }
+        .equation {
+            @include digits;
+            background: linear-gradient(#8045d1, #8C51DD) !important;
+        }
+        .wide {
+            background-color: #E62F89 !important;
+            grid-column: span 2;
+        }
+    }
+    // button {
+    //     cursor: pointer;
+    //     font-size: 1.6em;
+    //     border: none;
+    //     padding: 15px;
+    //     .bottomLeftEdge {
+    //         border-bottom-left-radius: 8px;
+    //     }
+    //     .bottomRightEdge {
+    //         border-bottom-right-radius: 8px;
+    //     }
+    // }
 }
 
-.result {
-    color: white;
-    font-size: 3.5em;
-    font-weight: lighter;
-}
-
-.bottomLeftEdge {
-    border-bottom-left-radius: 8px;
-}
-
-.bottomRightEdge {
-    border-bottom-right-radius: 8px;
-}
+// .grid>.digits-left-column {
+//     background: linear-gradient($firstButtonColor, $secondButtonColor);
+// }
+// .digits-midle-column {
+//     background: linear-gradient($firstButtonColor, $secondButtonColor);
+// }
+// .digits-right-column {
+//     background: linear-gradient($firstButtonColor, $secondButtonColor);
+// }
